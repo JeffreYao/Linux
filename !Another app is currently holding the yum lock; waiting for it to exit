@@ -10,14 +10,14 @@ Another app is currently holding the yum lock; waiting for it to exit...
 
 #The error indicates that anoter instance is running for the yum update,and it's PID is 13163. So check for the PID in the 
 
-<pre>
+```cmd
 #'ps aux  | grep PackageKit'
 root      13163 26.9  2.6 540480 127060 ?       SN   10:04   0:19 /usr/bin/python /usr/share/PackageKit/helpers/yum/yumBackend.py refresh-cache yes
-</pre>
+```cmd
 
 #A Packagekit is holding the yum lock  while running regularly.We just  remove it completely.
 
-<pre>
+```cmd
 kill -9 13163
-</pre>
+```cmd
 
