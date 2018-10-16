@@ -1,0 +1,23 @@
+Another app is currently holding the yum lock; waiting for it to exit
+# when I was use yum list command , I would get an error shown below:
+
+Existing lock /var/run/yum.pid: another copy is running as pid 13163.
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: PackageKit
+    Memory :  26 M RSS (356 MB VSZ)
+    Started: Tue Oct 16 10:04:30 2018 - 00:06 ago
+    State  : Sleeping, pid: 13163
+
+#The error indicates that anoter instance is running for the yum update,and it's PID is 13163. So check for the PID in the 
+
+<pre>
+#'ps aux  | grep PackageKit'
+root      13163 26.9  2.6 540480 127060 ?       SN   10:04   0:19 /usr/bin/python /usr/share/PackageKit/helpers/yum/yumBackend.py refresh-cache yes
+</pre>
+
+#A Packagekit is holding the yum lock  while running regularly.We just  remove it completely.
+
+<pre>
+kill -9 13163
+</pre>
+
