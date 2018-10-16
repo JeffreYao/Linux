@@ -13,11 +13,10 @@ Another app is currently holding the yum lock; waiting for it to exit...
 ```cmd
 #'ps aux  | grep PackageKit'
 root      13163 26.9  2.6 540480 127060 ?       SN   10:04   0:19 /usr/bin/python /usr/share/PackageKit/helpers/yum/yumBackend.py refresh-cache yes
-```cmd
+```
 
 #A Packagekit is holding the yum lock  while running regularly.We just  remove it completely.
 
 ```cmd
 kill -9 13163
-```cmd
-
+```
